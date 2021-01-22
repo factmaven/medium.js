@@ -1,19 +1,18 @@
 $(document).ready(function () {
-    var divID = 'medium-feed';
-    var mediumUsername = document.getElementById(divID).getAttribute('username');
-    var postCount = document.getElementById(divID).getAttribute('post-count')
-    var divContainer = document.getElementById(divID);
-    if (divContainer) {
-        divContainer.innerHTML = ($.getJSON('https://api.factmaven.com/xml-to-json/?xml=https://medium.com/feed/' + mediumUsername, function (json) {
+    var divID = document.getElementById('medium-feed');
+    var mediumUsername = divID.getAttribute('username');
+    var postCount = divID.getAttribute('post-count')
+    if (divID) {
+        divID.innerHTML = ($.getJSON('https://api.factmaven.com/xml-to-json/?xml=https://medium.com/feed/' + mediumUsername, function (json) {
             var medium = json.rss.channel.item;
-            $('#' + divID).html('');
+            $(divID).html('');
             for (var i in medium.slice(0, postCount)) {
                 if (medium[i].category == undefined) {
                     continue;
                 }
-                $('#' + divID).append(
+                $(divID).append(
                     '<div class="blog-post-date">' + dayjs(medium[i].pubDate).format('MMM D, YYYY @ h:mm a') + '</div>' +
-                    '<a href="' + medium[i].link + '" target="_blank" class="blog-post-image" style="background-image: url("' + medium[i].encoded.match(/src="(.+?)"/)[1] + '");"></a>' +
+                    '<a href="' + medium[i].link + '" target="_blank" class="blog-post-image" style="background-image: url(&quot;' + medium[i].encoded.match(/src="(.+?)"/)[1] + '");&quot;></a>' +
                     '<a href="' + medium[i].link + '" target="_blank" ' + 'title="' + medium[i].title + '">' +
                     '<h3 class="mt-3">' + medium[i].title + '</h3>' +
                     '</a>' +
