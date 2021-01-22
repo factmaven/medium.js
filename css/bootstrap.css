@@ -31,7 +31,7 @@
     --warning: #f6c343;
     --danger: #ff1744;
     --light: #f8f9fa;
-    --dark: black;
+    --dark: #000000;
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -2358,14 +2358,14 @@ fieldset:disabled a.btn {
 
 .btn-dark {
     color: #ffffff;
-    background-color: black;
-    border-color: black;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-dark:hover {
     color: #ffffff;
-    background-color: black;
-    border-color: black;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-dark:focus,
@@ -2376,16 +2376,16 @@ fieldset:disabled a.btn {
 .btn-dark.disabled,
 .btn-dark:disabled {
     color: #ffffff;
-    background-color: black;
-    border-color: black;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-dark:not(:disabled):not(.disabled):active,
 .btn-dark:not(:disabled):not(.disabled).active,
 .show>.btn-dark.dropdown-toggle {
     color: #ffffff;
-    background-color: black;
-    border-color: black;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-dark:not(:disabled):not(.disabled):active:focus,
@@ -2661,16 +2661,16 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-dark {
-    color: black;
+    color: #000000;
     background-color: transparent;
     background-image: none;
-    border-color: black;
+    border-color: #000000;
 }
 
 .btn-outline-dark:hover {
     color: #ffffff;
-    background-color: black;
-    border-color: black;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-outline-dark:focus,
@@ -2680,7 +2680,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-dark.disabled,
 .btn-outline-dark:disabled {
-    color: black;
+    color: #000000;
     background-color: transparent;
 }
 
@@ -2688,8 +2688,8 @@ fieldset:disabled a.btn {
 .btn-outline-dark:not(:disabled):not(.disabled).active,
 .show>.btn-outline-dark.dropdown-toggle {
     color: #ffffff;
-    background-color: black;
-    border-color: black;
+    background-color: #000000;
+    border-color: #000000;
 }
 
 .btn-outline-dark:not(:disabled):not(.disabled):active:focus,
@@ -3160,14 +3160,14 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-    background-color: black !important;
+    background-color: #000000 !important;
 }
 
 a.bg-dark:hover,
 a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-    background-color: black !important;
+    background-color: #000000 !important;
 }
 
 .bg-white {
@@ -3247,7 +3247,7 @@ button.bg-dark:focus {
 }
 
 .border-dark {
-    border-color: black !important;
+    border-color: #000000 !important;
 }
 
 .border-white {
@@ -6736,12 +6736,12 @@ a.text-light:focus {
 }
 
 .text-dark {
-    color: black !important;
+    color: #000000 !important;
 }
 
 a.text-dark:hover,
 a.text-dark:focus {
-    color: black !important;
+    color: #000000 !important;
 }
 
 .text-body {
@@ -6752,7 +6752,7 @@ a.text-dark:focus {
     color: #adb5bd !important;
 }
 
-.text-black-50 {
+.text-#000000-50 {
     color: rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -6855,6 +6855,20 @@ Custom CSS
 ::selection {
     background-color: #ffff00;
     color: #000000;
+}
+
+::-webkit-scrollbar {
+    width:10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 0px;
 }
 
 a:not(.heading-brand) {
@@ -6968,7 +6982,7 @@ footer a {
 /*Gradients*/
 
 .bg-gradient {
-    background: linear-gradient(#32fc8d, #0be370, #14c767, #00ab6c);
+    background: linear-gradient(#ffff00, #ffff4d);
 }
 
 
@@ -6976,7 +6990,7 @@ footer a {
 
 .code-window {
     border-radius: .45rem;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 1.52rem;
     box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1);
 }
