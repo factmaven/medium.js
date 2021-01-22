@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Medium.js</title>
+    <meta name="description" content="Embed your Medium posts on any website with Medium.js"/>
+    <!-- Styling -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<section class="bg-gradient pt-5 pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                <div class="heading-brand">Medium.js</div>
+                <a href="https://github.com/factmaven/medium.js/" class="btn btn-dark" target="_blank">Download</a>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-8 mx-auto text-center">
+                <h1>Display your Medium.com posts</h1>
+                <p class="lead mb-5">Whether you're running your website on a CMS like WordPress and Squarespace or a static HTML website on GitHub Pages, this will show you how to display all of your <a href="https://medium.com">Medium</a> posts in less than 30 lines of code.</p>
+                <a href="https://github.com/factmaven/medium.js/" class="btn btn-success svg-icon">
+                    <em class="mr-2" data-feather="github"></em>
+                    Contribute
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5 text-center">
+            <div class="col-md-9 mx-auto">
+                <div class="code-window">
+                    <div class="dots">
+                        <div class="red"></div>
+                        <div class="orange"></div>
+                        <div class="green"></div>
+                    </div>
+
+                    <h2>Step 1: Add JavaScript Code</h2>
+                    <pre class="language-javascript"><code class="language-javascript">$(document).ready(function () {
+    var divID = document.getElementById('medium-feed');
+    var mediumUsername = divID.getAttribute('username');
+    var postCount = divID.getAttribute('post-count')
+    if (divID) {
+        divID.innerHTML = ($.getJSON('https://api.factmaven.com/xml-to-json/?xml=https://medium.com/feed/' + mediumUsername, function (json) {
+            var medium = json.rss.channel.item;
+            $(divID).html('');
+            for (var i in medium.slice(0, postCount)) {
+                if (medium[i].category == undefined) {
+                    continue;
+                }
+                $(divID).append(
+                    '&lt;div class="blog-post-date">' + dayjs(medium[i].pubDate).format('MMM D, YYYY @ h:mm a') + '&lt;/div>' +
+                    '&lt;a href="' + medium[i].link + '" target="_blank" class="blog-post-image" style="background-image: url(&quot;' + medium[i].encoded.match(/src="(.+?)"/)[1] + '");&quot;>&lt;/a>' +
+                    '&lt;a href="' + medium[i].link + '" target="_blank" ' + 'title="' + medium[i].title + '">' +
+                    '&lt;h3 class="mt-3">' + medium[i].title + '&lt;/h3>' +
+                    '&lt;/a>' +
+                    '&lt;small>by ' + medium[i].creator + '&lt;/small>' +
+                    '&lt;p>' + medium[i].encoded.replace(/&lt;h3>(.+?)&lt;\/h3>/g, '').replace(/&lt;h4>(.+?)&lt;\/h4>/g, '').replace(/&lt;figure>(.+?)&lt;\/figure>/g, '').replace(/&lt;[^>]*>/g, '').substring(0, 140).trim() + '...&lt;/p>' +
+                    '&lt;small>&lt;b>Tags&lt;/b>: ' + medium[i].category.join(', ') + '&lt;/small>' +
+                    '&lt;p>&lt;a href="' + medium[i].link + '">Read More →&lt;/a>&lt;/p>'
+                );
+            }
+        }));
+    }
+});</code></pre>
+                    <h2>Step 2: Add HTML Code</h2>
+                    <pre class="language-markup"><code class="language-markup">&lt;div id="medium-feed" username="your_medium_username" post-count="10">&lt;/div></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<!-- <section class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2 class="text-center text-md-left">Reasons Why People Love <span class="text-success">Medium.js</span></h2>
+                <div class="row feature-grid">
+                    <div class="col-sm-6">
+                        <div class="media">
+                            <div class="icon-box">
+                                <div class="icon-box-inner">
+                                    <span data-feather="check-circle" width="28" height="28"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Dead Simple
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="media">
+                            <div class="icon-box">
+                                <div class="icon-box-inner">
+                                    <span data-feather="command" width="28" height="28"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Highly Intuitive
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="media">
+                            <div class="icon-box">
+                                <div class="icon-box-inner">
+                                    <span data-feather="feather" width="28" height="28"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Light as a Feather
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="media">
+                            <div class="icon-box">
+                                <div class="icon-box-inner">
+                                    <span data-feather="zap" width="28" height="28"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Blazing Fast
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="media">
+                            <div class="icon-box">
+                                <div class="icon-box-inner">
+                                    <span data-feather="git-pull-request" width="28" height="28"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Extensible
+                            </div>
+                        </div>
+                    </div><div class="col-sm-6">
+                        <div class="media">
+                            <div class="icon-box">
+                                <div class="icon-box-inner">
+                                    <span data-feather="droplet" width="28" height="28"></span>
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                Easy Styling
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- Used By Section -->
+<!-- <section class="pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2 class="text-center text-md-left">Used by Thousands of Companies</h2>
+                <p class="lead text-muted">Medium.js is used on several websites, small and large.</p>
+                <div class="mt-5 d-flex flex-row justify-content-md-between flex-wrap press-icons">
+                    <img src="https://logo.clearbit.com/google.com?size=60" alt="Google"/>
+                    <img src="https://logo.clearbit.com/twitter.com?size=60" alt="Twitter"/>
+                    <img src="https://logo.clearbit.com/vuejs.org?size=60" alt="Veu.js"/>
+                    <img src="https://logo.clearbit.com/stripe.com?size=60" alt="Stripe"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- Footer -->
+<footer class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Test Drive</a></li>
+                    <li class="list-inline-item"><a href="#">API Docs</a></li>
+                    <li class="list-inline-item"><a href="https://github.com/factmaven/medium.js/">Fork Medium.js on GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-md-4 mx-auto text-muted text-center small-xl">
+                &copy; <span id="current-year"></span> <a href="https://factmaven.com">Fact Maven</a>. All Rights Reserved.
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
