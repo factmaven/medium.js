@@ -89,7 +89,32 @@
         }));
     }
 });</code></pre>
-                    <h2>Step 2: Add HTML Code</h2>
+                    <h2>Step 2: Add CSS Code</h2>
+                    <pre class="language-css"><code class="language-css">.blog-post-image {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    overflow: auto;
+    display: block;
+}
+
+.blog-post-image:after {
+    content: "";
+    display: block;
+    position: relative;
+    margin-top: 60%;
+    width: 100%;
+    z-index: 1;
+}
+
+.blog-post-date {
+    position: absolute;
+    background-color: #ffffff;
+    padding: 5px;
+    color: #000000;
+}</code></pre>
+                    <h2>Step 3: Add HTML Code</h2>
                     <pre class="language-markup"><code class="language-markup">&lt;div id="medium-feed" username="your_medium_username" post-count="10">&lt;/div></code></pre>
                 </div>
             </div>
